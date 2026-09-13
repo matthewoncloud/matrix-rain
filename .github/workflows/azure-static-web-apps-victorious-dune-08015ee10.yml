@@ -19,11 +19,21 @@ jobs:
         with:
           submodules: true
           lfs: false
+      # Install dependencies and tools required for CI/CD
+      - name: Install HTML validator
+        run: npm install --global html-validate
       #  CI - Check for the presence of required files before building and deploying
       - name: Check required files
         run: |
           test -f index.html
           echo "index.html found"
+          test -f index.js
+          echo "index.js found"
+          test -f style.css
+          echo "style.css found"
+      # Validate HTML files before building and deploying
+      - name: Validate HTML
+        run: html-validate index.html
 
       - name: Build And Deploy
         id: builddeploy
