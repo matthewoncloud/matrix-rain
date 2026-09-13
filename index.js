@@ -1,9 +1,9 @@
  // number of characters in each rain streak
-const rainStreakLength = 10;
+const rainStreakLength = 5;
 // delay in milliseconds between animation frames (lower = faster rain)
 const speed = 60;
 // size in pixels of each character cell
-const fontSize = 10;
+const fontSize = 12;
 
 
 
@@ -109,8 +109,8 @@ const draw = () => {
         for(let j = 1; j <= rainStreakLength; j++) {
             if(j == 1) {
                 context.fillStyle = 'rgba(0, 255, 0, 1)';
-            } else if(j == rainStreakLength) {
-                context.fillStyle = 'rgba(0, 0, 0, 0)';
+            // } else if(j == rainStreakLength) {
+            //     context.fillStyle = 'rgba(0, 0, 0, 0)';
             } else {
                 context.fillStyle = `rgba(0, 255, 0, ${1-(j/rainStreakLength)})`;
             }
@@ -118,6 +118,11 @@ const draw = () => {
             // const alpha = j*0.1;
             // context.fillStyle = `rgba(0, 255, 0, ${alpha})`;
 
+            // if (j == rainStreakLength) {
+            //     context.fillText('', i*fontSize, (rainDrops[i]-j)*fontSize);
+            // } else {
+            //     context.fillText(rainDropText2dArray[i][rainDrops[i]-j], i*fontSize, (rainDrops[i]-j)*fontSize);
+            // }
             context.fillText(rainDropText2dArray[i][rainDrops[i]-j], i*fontSize, (rainDrops[i]-j)*fontSize);
         }
 
