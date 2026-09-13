@@ -51,7 +51,7 @@ const runes = 'ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛋᛏᛒᛖᛗᛚ�
 const nums = '0123456789';
 
 // combine every script's characters into one pool to randomly pick glyphs from
-const alphabet = katakana + latin + latinLower + greek + cyrillic + arabic + persian + urdu + hindi + bengali + devanagari + hebrew + georgian + thai + burmese + telugu + tibetan + mongolian + armenian + glagolitic + tifinagh + tifinaghExtended + tamazight + chinese + japanese + korean + nums + runes;
+const alphabet = nums + katakana + latin + latinLower + greek + cyrillic + arabic + persian + urdu + hindi + bengali + devanagari + hebrew + georgian + thai + burmese + telugu + tibetan + mongolian + armenian + glagolitic + tifinagh + tifinaghExtended + tamazight + chinese + japanese + korean + runes + coptic;
 
 // number of character columns that fit across the canvas width (must be a whole number so array lengths stay in sync)
 const columns = Math.floor(canvas.width/fontSize);
