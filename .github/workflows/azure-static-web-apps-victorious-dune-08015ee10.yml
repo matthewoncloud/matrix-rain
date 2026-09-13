@@ -29,8 +29,8 @@ jobs:
           echo "index.html found"
           test -f index.js
           echo "index.js found"
-          test -f style.css
-          echo "style.css found"
+          test -f styles.css
+          echo "styles.css found"
       # Validate HTML files before building and deploying
       - name: Validate HTML
         run: html-validate index.html
