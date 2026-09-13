@@ -34,6 +34,13 @@ jobs:
       # Validate HTML files before building and deploying
       - name: Validate HTML
         run: html-validate index.html
+        
+      # Lint JavaScript files before building and deploying
+      - name: Install ESLint
+        run: npm install --global eslint
+      # Lint JavaScript files using ESLint
+      - name: Lint JavaScript
+        run: eslint .
 
       - name: Build And Deploy
         id: builddeploy
