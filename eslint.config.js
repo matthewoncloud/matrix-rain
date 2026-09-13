@@ -5,8 +5,8 @@ export default [
       ecmaVersion: "latest"
     },
     rules: {
-      "no-unused-vars": "warning",
-      "no-undef": "warning"
+      "no-unused-vars": "warn",
+      "no-undef": "warn"
     }
   }
 ];
