@@ -10,18 +10,15 @@ on:
       - main
 
 jobs:
-  build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+
+  test:
+    name: Test
     runs-on: ubuntu-latest
-    name: Build and Deploy Job
+
     steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: true
-          lfs: false
-      # Install dependencies and tools required for CI/CD
-      - name: Install HTML validator
-        run: npm install --global html-validate
+      - name: Checkout
+        uses: actions/checkout@v4
+
       #  CI - Check for the presence of required files before building and deploying
       - name: Check required files
         run: |
@@ -31,6 +28,10 @@ jobs:
           echo "index.js found"
           test -f styles.css
           echo "styles.css found"
+
+      # Install dependencies and tools required for CI/CD
+      - name: Install HTML validator
+        run: npm install --global html-validate
       # Validate HTML files before building and deploying
       - name: Validate HTML
         run: html-validate index.html
@@ -41,6 +42,17 @@ jobs:
       # Lint JavaScript files using ESLint
       - name: Lint JavaScript
         run: eslint .
+  
+  build_and_deploy_job:
+    needs: test
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          lfs: false
 
       - name: Build And Deploy
         id: builddeploy
